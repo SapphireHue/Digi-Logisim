@@ -56,11 +56,9 @@
     <a name="circuit" val="main"/>
     <a name="circuitnamedboxfixedsize" val="true"/>
     <a name="simulationFrequency" val="1.0"/>
-    <comp loc="(330,140)" name="MyXOR"/>
-    <comp loc="(360,310)" name="MyXOR"/>
   </circuit>
   <circuit name="MyXOR">
-    <a name="appearance" val="logisim_evolution"/>
+    <a name="appearance" val="custom"/>
     <a name="circuit" val="MyXOR"/>
     <a name="circuitnamedboxfixedsize" val="true"/>
     <a name="simulationFrequency" val="1.0"/>
@@ -104,5 +102,39 @@
     <wire from="(280,270)" to="(320,270)"/>
     <wire from="(320,190)" to="(320,210)"/>
     <wire from="(320,250)" to="(320,270)"/>
+  </circuit>
+  <circuit name="MyXORCircuit">
+    <a name="appearance" val="logisim_evolution"/>
+    <a name="circuit" val="MyXORCircuit"/>
+    <a name="circuitnamedboxfixedsize" val="true"/>
+    <a name="simulationFrequency" val="1.0"/>
+    <comp lib="0" loc="(220,150)" name="Pin">
+      <a name="appearance" val="NewPins"/>
+      <a name="label" val="a"/>
+    </comp>
+    <comp lib="0" loc="(220,170)" name="Pin">
+      <a name="appearance" val="NewPins"/>
+      <a name="label" val="b"/>
+    </comp>
+    <comp lib="0" loc="(220,200)" name="Pin">
+      <a name="appearance" val="NewPins"/>
+      <a name="label" val="c"/>
+    </comp>
+    <comp lib="0" loc="(360,180)" name="Pin">
+      <a name="appearance" val="NewPins"/>
+      <a name="facing" val="west"/>
+      <a name="label" val="y"/>
+      <a name="output" val="true"/>
+    </comp>
+    <comp loc="(290,160)" name="MyXOR"/>
+    <comp loc="(360,180)" name="MyXOR"/>
+    <wire from="(220,150)" to="(250,150)"/>
+    <wire from="(220,170)" to="(250,170)"/>
+    <wire from="(220,200)" to="(290,200)"/>
+    <wire from="(290,160)" to="(300,160)"/>
+    <wire from="(290,190)" to="(290,200)"/>
+    <wire from="(290,190)" to="(320,190)"/>
+    <wire from="(300,160)" to="(300,170)"/>
+    <wire from="(300,170)" to="(320,170)"/>
   </circuit>
 </project>
