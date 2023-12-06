@@ -215,16 +215,16 @@
     </comp>
     <comp lib="1" loc="(180,120)" name="NOT Gate"/>
     <comp lib="1" loc="(250,120)" name="NOT Gate"/>
-    <comp lib="8" loc="(137,230)" name="Text">
+    <comp lib="8" loc="(135,230)" name="Text">
       <a name="text" val="8 transistors"/>
     </comp>
-    <comp lib="8" loc="(249,231)" name="Text">
+    <comp lib="8" loc="(245,230)" name="Text">
       <a name="text" val="Saffron Liu"/>
     </comp>
-    <comp lib="8" loc="(272,211)" name="Text">
+    <comp lib="8" loc="(270,210)" name="Text">
       <a name="text" val="2 to 1 Multiplexer"/>
     </comp>
-    <comp lib="8" loc="(328,141)" name="Text">
+    <comp lib="8" loc="(325,140)" name="Text">
       <a name="text" val="max(s + 1.75, in0 + 1, in1 + 1)"/>
     </comp>
     <wire from="(130,160)" to="(170,160)"/>
@@ -281,13 +281,13 @@
     <comp lib="8" loc="(165,340)" name="Text">
       <a name="text" val="24 transistors"/>
     </comp>
-    <comp lib="8" loc="(338,341)" name="Text">
+    <comp lib="8" loc="(335,340)" name="Text">
       <a name="text" val="Saffron Liu"/>
     </comp>
-    <comp lib="8" loc="(360,321)" name="Text">
+    <comp lib="8" loc="(360,320)" name="Text">
       <a name="text" val="4 to 1 Multiplexer"/>
     </comp>
-    <comp lib="8" loc="(521,170)" name="Text">
+    <comp lib="8" loc="(520,170)" name="Text">
       <a name="text" val="max(s0 + 2.75, s1 + 1.75, in0 + 2, in1 + 2, in2 + 2, in3 + 2)"/>
     </comp>
     <comp loc="(240,190)" name="Mux2to1Transmission"/>
@@ -311,5 +311,96 @@
     <wire from="(270,160)" to="(280,160)"/>
     <wire from="(270,90)" to="(270,120)"/>
     <wire from="(290,170)" to="(290,310)"/>
+  </circuit>
+  <circuit name="Mux2to1Inv_4Bit">
+    <a name="appearance" val="custom"/>
+    <a name="circuit" val="Mux2to1Inv_4Bit"/>
+    <a name="circuitnamedboxfixedsize" val="true"/>
+    <a name="simulationFrequency" val="1.0"/>
+    <appear>
+      <polygon fill="none" points="40,0 40,120 70,90 70,30" stroke="#000000" stroke-width="2"/>
+      <ellipse cx="75" cy="60" fill="none" rx="5" ry="5" stroke="#000000" stroke-width="2"/>
+      <circ-anchor facing="east" x="80" y="60"/>
+      <circ-port dir="in" pin="70,510" x="50" y="10"/>
+      <circ-port dir="in" pin="90,30" x="40" y="40"/>
+      <circ-port dir="in" pin="90,60" x="40" y="80"/>
+      <circ-port dir="out" pin="320,510" x="80" y="60"/>
+    </appear>
+    <comp lib="0" loc="(130,30)" name="Splitter">
+      <a name="facing" val="south"/>
+      <a name="fanout" val="4"/>
+      <a name="incoming" val="4"/>
+    </comp>
+    <comp lib="0" loc="(320,510)" name="Pin">
+      <a name="appearance" val="NewPins"/>
+      <a name="facing" val="west"/>
+      <a name="output" val="true"/>
+      <a name="width" val="4"/>
+    </comp>
+    <comp lib="0" loc="(320,510)" name="Splitter">
+      <a name="facing" val="north"/>
+      <a name="fanout" val="4"/>
+      <a name="incoming" val="4"/>
+    </comp>
+    <comp lib="0" loc="(70,510)" name="Pin">
+      <a name="appearance" val="NewPins"/>
+      <a name="label" val="Cin"/>
+    </comp>
+    <comp lib="0" loc="(90,30)" name="Pin">
+      <a name="appearance" val="NewPins"/>
+      <a name="label" val="A"/>
+      <a name="width" val="4"/>
+    </comp>
+    <comp lib="0" loc="(90,60)" name="Pin">
+      <a name="appearance" val="NewPins"/>
+      <a name="label" val="B"/>
+      <a name="width" val="4"/>
+    </comp>
+    <comp lib="0" loc="(90,60)" name="Splitter">
+      <a name="facing" val="south"/>
+      <a name="fanout" val="4"/>
+      <a name="incoming" val="4"/>
+    </comp>
+    <comp loc="(240,160)" name="Mux2to1Transmission"/>
+    <comp loc="(240,260)" name="Mux2to1Transmission"/>
+    <comp loc="(240,360)" name="Mux2to1Transmission"/>
+    <comp loc="(240,460)" name="Mux2to1Transmission"/>
+    <wire from="(100,480)" to="(210,480)"/>
+    <wire from="(100,80)" to="(100,480)"/>
+    <wire from="(110,380)" to="(210,380)"/>
+    <wire from="(110,80)" to="(110,380)"/>
+    <wire from="(120,280)" to="(210,280)"/>
+    <wire from="(120,80)" to="(120,280)"/>
+    <wire from="(130,180)" to="(210,180)"/>
+    <wire from="(130,80)" to="(130,180)"/>
+    <wire from="(140,440)" to="(210,440)"/>
+    <wire from="(140,50)" to="(140,440)"/>
+    <wire from="(150,340)" to="(210,340)"/>
+    <wire from="(150,50)" to="(150,340)"/>
+    <wire from="(160,240)" to="(210,240)"/>
+    <wire from="(160,50)" to="(160,240)"/>
+    <wire from="(170,140)" to="(210,140)"/>
+    <wire from="(170,50)" to="(170,140)"/>
+    <wire from="(180,210)" to="(180,310)"/>
+    <wire from="(180,210)" to="(220,210)"/>
+    <wire from="(180,310)" to="(180,410)"/>
+    <wire from="(180,310)" to="(220,310)"/>
+    <wire from="(180,410)" to="(180,510)"/>
+    <wire from="(180,410)" to="(220,410)"/>
+    <wire from="(180,510)" to="(220,510)"/>
+    <wire from="(220,190)" to="(220,210)"/>
+    <wire from="(220,290)" to="(220,310)"/>
+    <wire from="(220,390)" to="(220,410)"/>
+    <wire from="(220,490)" to="(220,510)"/>
+    <wire from="(240,160)" to="(310,160)"/>
+    <wire from="(240,260)" to="(300,260)"/>
+    <wire from="(240,360)" to="(290,360)"/>
+    <wire from="(240,460)" to="(280,460)"/>
+    <wire from="(280,460)" to="(280,490)"/>
+    <wire from="(290,360)" to="(290,490)"/>
+    <wire from="(300,260)" to="(300,490)"/>
+    <wire from="(310,160)" to="(310,490)"/>
+    <wire from="(70,510)" to="(180,510)"/>
+    <wire from="(90,30)" to="(130,30)"/>
   </circuit>
 </project>
