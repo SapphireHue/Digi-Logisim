@@ -403,4 +403,92 @@
     <wire from="(70,510)" to="(180,510)"/>
     <wire from="(90,30)" to="(130,30)"/>
   </circuit>
+  <circuit name="Mux2to1Inv_8Bit">
+    <a name="appearance" val="custom"/>
+    <a name="circuit" val="Mux2to1Inv_8Bit"/>
+    <a name="circuitnamedboxfixedsize" val="true"/>
+    <a name="simulationFrequency" val="1.0"/>
+    <appear>
+      <polygon fill="none" points="40,0 40,120 70,90 70,30" stroke="#000000" stroke-width="2"/>
+      <ellipse cx="75" cy="60" fill="none" rx="5" ry="5" stroke="#000000" stroke-width="2"/>
+      <circ-anchor facing="east" x="80" y="60"/>
+      <circ-port dir="in" pin="130,130" x="40" y="80"/>
+      <circ-port dir="in" pin="130,70" x="40" y="40"/>
+      <circ-port dir="in" pin="290,70" x="50" y="10"/>
+      <circ-port dir="out" pin="320,370" x="80" y="60"/>
+    </appear>
+    <comp lib="0" loc="(130,130)" name="Pin">
+      <a name="appearance" val="NewPins"/>
+      <a name="label" val="B"/>
+      <a name="width" val="8"/>
+    </comp>
+    <comp lib="0" loc="(130,130)" name="Splitter">
+      <a name="bit1" val="0"/>
+      <a name="bit2" val="0"/>
+      <a name="bit3" val="0"/>
+      <a name="bit4" val="1"/>
+      <a name="bit5" val="1"/>
+      <a name="bit6" val="1"/>
+      <a name="bit7" val="1"/>
+      <a name="facing" val="south"/>
+      <a name="incoming" val="8"/>
+    </comp>
+    <comp lib="0" loc="(130,70)" name="Pin">
+      <a name="appearance" val="NewPins"/>
+      <a name="label" val="A"/>
+      <a name="width" val="8"/>
+    </comp>
+    <comp lib="0" loc="(170,70)" name="Splitter">
+      <a name="bit1" val="0"/>
+      <a name="bit2" val="0"/>
+      <a name="bit3" val="0"/>
+      <a name="bit4" val="1"/>
+      <a name="bit5" val="1"/>
+      <a name="bit6" val="1"/>
+      <a name="bit7" val="1"/>
+      <a name="facing" val="south"/>
+      <a name="incoming" val="8"/>
+    </comp>
+    <comp lib="0" loc="(290,70)" name="Pin">
+      <a name="appearance" val="NewPins"/>
+      <a name="facing" val="south"/>
+      <a name="label" val="Cin"/>
+    </comp>
+    <comp lib="0" loc="(320,370)" name="Pin">
+      <a name="appearance" val="NewPins"/>
+      <a name="facing" val="west"/>
+      <a name="output" val="true"/>
+      <a name="width" val="8"/>
+    </comp>
+    <comp lib="0" loc="(320,370)" name="Splitter">
+      <a name="bit1" val="0"/>
+      <a name="bit2" val="0"/>
+      <a name="bit3" val="0"/>
+      <a name="bit4" val="1"/>
+      <a name="bit5" val="1"/>
+      <a name="bit6" val="1"/>
+      <a name="bit7" val="1"/>
+      <a name="facing" val="north"/>
+      <a name="incoming" val="8"/>
+    </comp>
+    <comp loc="(270,200)" name="Mux2to1Inv_4Bit"/>
+    <comp loc="(270,340)" name="Mux2to1Inv_4Bit"/>
+    <wire from="(130,70)" to="(170,70)"/>
+    <wire from="(140,150)" to="(140,220)"/>
+    <wire from="(140,220)" to="(230,220)"/>
+    <wire from="(150,150)" to="(150,360)"/>
+    <wire from="(150,360)" to="(230,360)"/>
+    <wire from="(180,180)" to="(230,180)"/>
+    <wire from="(180,90)" to="(180,180)"/>
+    <wire from="(190,320)" to="(230,320)"/>
+    <wire from="(190,90)" to="(190,320)"/>
+    <wire from="(240,150)" to="(290,150)"/>
+    <wire from="(240,290)" to="(290,290)"/>
+    <wire from="(270,200)" to="(300,200)"/>
+    <wire from="(270,340)" to="(310,340)"/>
+    <wire from="(290,150)" to="(290,290)"/>
+    <wire from="(290,70)" to="(290,150)"/>
+    <wire from="(300,200)" to="(300,350)"/>
+    <wire from="(310,340)" to="(310,350)"/>
+  </circuit>
 </project>
