@@ -1,0 +1,33 @@
+# load R0 with address 0 of data
+ldi R0,0
+ld R0,R0
+# add 1
+ldi R3,1
+add R0,R3
+# load R2 with address 1 and add to R0
+ld R2, R3
+add R0, R2
+# R0 holds the results, R1 is the data memory address, R2 is the data, R3 is a constant value of one for incrementing
+ldi R1, 2
+ld R2, R1
+add R0, R2
+# increment R1 to 3
+add R1, R3
+ld R2, R1
+add R0, R2
+# increment R1 to 4
+add R1, R3
+ld R2, R1
+sub R0, R2
+# sub 5
+add R1, R3
+ld R2, R1
+sub R0, R2
+# sub 6
+add R1, R3
+ld R2, R1
+sub R0, R2
+# sub 7
+add R1, R3
+ld R2, R1
+sub R0, R2
