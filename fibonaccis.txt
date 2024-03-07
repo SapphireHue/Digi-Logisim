@@ -1,0 +1,59 @@
+# R0 holds n-2, the address to store F_n in
+# R1 and R2 alternate between F_n-2 and F_n-1
+# R3 holds a constant value of 1 to increment R0
+
+# Initialize values
+ldi R0, 0
+ldi R1, 0 # R1 = F_0
+ldi R2, 1 # R2 = F_1
+ldi R3, 1
+
+# F_2 (R1) = F_0 (R1) + F_1 (R2)
+add R1, R2
+st R1, R0 # store F_2 (R1) @ 0 (R0)
+add R0, R3 # increment R0 to 1
+
+# F_3 (R2) = F_1 (R2) + F_2 (R1)
+add R2, R1
+st R2, R0
+add R0, R3
+
+# F_4
+add R1, R2
+st R1, R0
+add R0, R3
+
+# F_5
+add R2, R1
+st R2, R0
+add R0, R3
+
+# F_6
+add R1, R2
+st R1, R0
+add R0, R3
+
+# F_7
+add R2, R1
+st R2, R0
+add R0, R3
+
+# F_8
+add R1, R2
+st R1, R0
+add R0, R3
+
+# F_9
+add R2, R1
+st R2, R0
+add R0, R3
+
+# F_10
+add R1, R2
+st R1, R0
+add R0, R3
+
+# F_11
+add R2, R1
+st R2, R0
+add R0, R3
