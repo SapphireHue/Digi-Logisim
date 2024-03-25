@@ -131,10 +131,6 @@
       <a name="label" val="ld"/>
       <a name="width" val="16"/>
     </comp>
-    <comp lib="0" loc="(1290,330)" name="Pin">
-      <a name="appearance" val="NewPins"/>
-      <a name="width" val="4"/>
-    </comp>
     <comp lib="0" loc="(130,550)" name="Tunnel">
       <a name="facing" val="east"/>
       <a name="label" val="clk"/>
@@ -270,7 +266,7 @@
       <a name="facing" val="west"/>
       <a name="label" val="cycle"/>
       <a name="output" val="true"/>
-      <a name="radix" val="16"/>
+      <a name="radix" val="10unsigned"/>
       <a name="width" val="16"/>
     </comp>
     <comp lib="0" loc="(310,200)" name="Power">
@@ -486,6 +482,10 @@
     <comp lib="8" loc="(515,470)" name="Text">
       <a name="font" val="SansSerif bold 24"/>
       <a name="text" val="Arithmetic"/>
+    </comp>
+    <comp lib="8" loc="(964,403)" name="Text">
+      <a name="font" val="SansSerif plain 8"/>
+      <a name="text" val="jump enable and targ trigger during decode, not execute"/>
     </comp>
     <comp lib="8" loc="(990,140)" name="Text">
       <a name="font" val="SansSerif bold 24"/>
@@ -1101,7 +1101,7 @@
       <a name="fanout" val="4"/>
       <a name="incoming" val="6"/>
     </comp>
-    <comp lib="0" loc="(290,370)" name="Power"/>
+    <comp lib="0" loc="(290,360)" name="Power"/>
     <comp lib="0" loc="(360,790)" name="Power">
       <a name="facing" val="west"/>
     </comp>
@@ -1202,17 +1202,12 @@
       <a name="inputs" val="3"/>
       <a name="size" val="30"/>
     </comp>
-    <comp lib="4" loc="(310,360)" name="D Flip-Flop">
+    <comp lib="1" loc="(450,350)" name="AND Gate">
+      <a name="size" val="30"/>
+    </comp>
+    <comp lib="4" loc="(310,350)" name="D Flip-Flop">
       <a name="appearance" val="logisim_evolution"/>
       <a name="label" val="fv"/>
-    </comp>
-    <comp lib="4" loc="(400,320)" name="Register">
-      <a name="appearance" val="logisim_evolution"/>
-      <a name="width" val="1"/>
-    </comp>
-    <comp lib="4" loc="(400,420)" name="Register">
-      <a name="appearance" val="logisim_evolution"/>
-      <a name="width" val="6"/>
     </comp>
     <comp lib="4" loc="(400,530)" name="Register">
       <a name="appearance" val="logisim_evolution"/>
@@ -1264,8 +1259,8 @@
     <wire from="(200,390)" to="(270,390)"/>
     <wire from="(210,90)" to="(210,120)"/>
     <wire from="(210,90)" to="(270,90)"/>
-    <wire from="(220,160)" to="(220,350)"/>
-    <wire from="(220,350)" to="(400,350)"/>
+    <wire from="(220,160)" to="(220,340)"/>
+    <wire from="(220,340)" to="(420,340)"/>
     <wire from="(230,80)" to="(230,120)"/>
     <wire from="(230,80)" to="(320,80)"/>
     <wire from="(240,270)" to="(240,300)"/>
@@ -1290,12 +1285,12 @@
     <wire from="(270,90)" to="(310,90)"/>
     <wire from="(280,110)" to="(280,190)"/>
     <wire from="(280,190)" to="(300,190)"/>
-    <wire from="(280,450)" to="(400,450)"/>
+    <wire from="(280,450)" to="(460,450)"/>
     <wire from="(290,100)" to="(290,120)"/>
     <wire from="(290,290)" to="(330,290)"/>
-    <wire from="(290,370)" to="(300,370)"/>
-    <wire from="(290,410)" to="(290,440)"/>
-    <wire from="(290,410)" to="(300,410)"/>
+    <wire from="(290,360)" to="(300,360)"/>
+    <wire from="(290,400)" to="(290,440)"/>
+    <wire from="(290,400)" to="(300,400)"/>
     <wire from="(290,440)" to="(380,440)"/>
     <wire from="(300,150)" to="(300,160)"/>
     <wire from="(300,160)" to="(310,160)"/>
@@ -1310,16 +1305,14 @@
     <wire from="(320,80)" to="(400,80)"/>
     <wire from="(330,270)" to="(330,290)"/>
     <wire from="(330,270)" to="(340,270)"/>
-    <wire from="(330,420)" to="(330,430)"/>
-    <wire from="(330,430)" to="(390,430)"/>
+    <wire from="(330,410)" to="(330,420)"/>
+    <wire from="(330,420)" to="(390,420)"/>
     <wire from="(360,170)" to="(400,170)"/>
-    <wire from="(360,370)" to="(400,370)"/>
+    <wire from="(360,360)" to="(420,360)"/>
     <wire from="(360,790)" to="(370,790)"/>
     <wire from="(360,810)" to="(380,810)"/>
     <wire from="(360,840)" to="(390,840)"/>
     <wire from="(370,260)" to="(400,260)"/>
-    <wire from="(370,470)" to="(370,580)"/>
-    <wire from="(370,470)" to="(400,470)"/>
     <wire from="(370,580)" to="(370,680)"/>
     <wire from="(370,580)" to="(400,580)"/>
     <wire from="(370,680)" to="(370,790)"/>
@@ -1329,13 +1322,9 @@
     <wire from="(380,120)" to="(400,120)"/>
     <wire from="(380,210)" to="(380,300)"/>
     <wire from="(380,210)" to="(400,210)"/>
-    <wire from="(380,300)" to="(380,390)"/>
+    <wire from="(380,300)" to="(380,440)"/>
     <wire from="(380,300)" to="(400,300)"/>
-    <wire from="(380,390)" to="(380,440)"/>
-    <wire from="(380,390)" to="(400,390)"/>
-    <wire from="(380,440)" to="(380,490)"/>
-    <wire from="(380,490)" to="(380,600)"/>
-    <wire from="(380,490)" to="(400,490)"/>
+    <wire from="(380,440)" to="(380,600)"/>
     <wire from="(380,600)" to="(380,700)"/>
     <wire from="(380,600)" to="(400,600)"/>
     <wire from="(380,700)" to="(380,810)"/>
@@ -1347,11 +1336,7 @@
     <wire from="(390,230)" to="(430,230)"/>
     <wire from="(390,320)" to="(390,420)"/>
     <wire from="(390,320)" to="(430,320)"/>
-    <wire from="(390,420)" to="(390,430)"/>
-    <wire from="(390,420)" to="(430,420)"/>
-    <wire from="(390,430)" to="(390,520)"/>
-    <wire from="(390,520)" to="(390,630)"/>
-    <wire from="(390,520)" to="(430,520)"/>
+    <wire from="(390,420)" to="(390,630)"/>
     <wire from="(390,630)" to="(390,730)"/>
     <wire from="(390,630)" to="(430,630)"/>
     <wire from="(390,730)" to="(390,840)"/>
@@ -1361,11 +1346,10 @@
     <wire from="(430,130)" to="(430,140)"/>
     <wire from="(430,220)" to="(430,230)"/>
     <wire from="(430,310)" to="(430,320)"/>
-    <wire from="(430,410)" to="(430,420)"/>
-    <wire from="(430,510)" to="(430,520)"/>
     <wire from="(430,620)" to="(430,630)"/>
     <wire from="(430,720)" to="(430,730)"/>
     <wire from="(430,830)" to="(430,840)"/>
+    <wire from="(450,350)" to="(460,350)"/>
   </circuit>
   <circuit name="cycleCounter">
     <a name="appearance" val="custom"/>
