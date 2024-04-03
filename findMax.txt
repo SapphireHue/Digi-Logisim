@@ -1,0 +1,51 @@
+# Python Code:
+# myList = [-9,3,16,27,-36,1,5]
+# curMax = myList[0]
+# for curNum in myList:
+#   if curNum > curMax:
+#     curMax = curNum
+# print(curMax)
+
+# Setup:
+# data[0] = &list[0]
+# data[1] = &list[len-1]
+# R0 = current max
+# R1 = working data
+# R2 = address of number to check
+# R3 = 1 (to increment)
+
+# Initializing:
+# load R2 with the address of the first thing in the list
+ldi R3, 0
+ld R2, R3
+
+# curMax = myList[0]
+ld R0, R2
+
+# set R3 to 1
+ldi R3, 1
+
+# The loop:
+# increment R2
+t0: add R2, R3
+
+# compare address to end address: R1 = end address, R1 - R2 = end - current; end - current < 0 -> end < current -> jump to halt
+ld R1, R3
+sub R1, R2
+jumpn t1
+# no need for nop; if we load that's not bad
+# retrieve the number
+ld R1, R2
+# compare the numbers: subtract, jump if, then add back to prevent stuff changing (fills the delay slot)
+sub R1, R0 # can't do sub R0, R1 because don't want R0 to change
+# if R1 < R0 -> jump to top of loop
+jumpn t0
+add R1, R0
+# else update R0 
+mv R0, R1
+jump t0
+nop
+
+t1: halt
+D: jump D # so it'll just stay in place after; doesn't actually count as an instruction
+nop
