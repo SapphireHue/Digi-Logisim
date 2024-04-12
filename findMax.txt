@@ -1,3 +1,5 @@
+# Max of 7 data memory: 0008 000e 0000 0000 0000 0000 0000 0000 FFF7 0003 0010 001B FFDC 0001 0005
+
 # Python Code:
 # myList = [-9,3,16,27,-36,1,5]
 # curMax = myList[0]
@@ -25,27 +27,26 @@ ld R0, R2
 # set R3 to 1
 ldi R3, 1
 
+add R2, R3
 # The loop:
-# increment R2
-t0: add R2, R3
-
-# compare address to end address: R1 = end address, R1 - R2 = end - current; end - current < 0 -> end < current -> jump to halt
-ld R1, R3
-sub R1, R2
-jumpn t1
-# no need for nop; if we load that's not bad
 # retrieve the number
-ld R1, R2
+t0: ld R1, R2
 # compare the numbers: subtract, jump if, then add back to prevent stuff changing (fills the delay slot)
 sub R1, R0 # can't do sub R0, R1 because don't want R0 to change
-# if R1 < R0 -> jump to top of loop
-jumpn t0
+# if R1 < R0 -> continue to next number (increment and check addreses)
+jumpn t1
 add R1, R0
-# else update R0 
+# else update R0 then proceed to next number
 mv R0, R1
-jump t0
-nop
 
-t1: halt
+# increment R2
+t1: add R2, R3
+# compare address to end address: if current < end, jump back to top
+ld R1, R3
+sub R2, R1
+jumpn t0
+add R2, R1
+
+halt
 D: jump D # so it'll just stay in place after; doesn't actually count as an instruction
 nop
