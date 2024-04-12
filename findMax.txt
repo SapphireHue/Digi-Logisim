@@ -27,22 +27,21 @@ ld R0, R2
 # set R3 to 1
 ldi R3, 1
 
-add R2, R3
 # The loop:
+# increment R2
+t0: add R2, R3
 # retrieve the number
-t0: ld R1, R2
+ld R1, R2
 # compare the numbers: subtract, jump if, then add back to prevent stuff changing (fills the delay slot)
-sub R1, R0 # can't do sub R0, R1 because don't want R0 to change
+sub R1, R0 
 # if R1 < R0 -> continue to next number (increment and check addreses)
 jumpn t1
 add R1, R0
 # else update R0 then proceed to next number
 mv R0, R1
 
-# increment R2
-t1: add R2, R3
 # compare address to end address: if current < end, jump back to top
-ld R1, R3
+t1: ld R1, R3
 sub R2, R1
 jumpn t0
 add R2, R1
