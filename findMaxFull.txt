@@ -1,0 +1,81 @@
+# max of 100 full data memory: 0002 0065 8000 8001 8005 8004 0005 6f3f 266f ce3d 2284 a44a a753 36e0 bca4 78c3 7d30 1e28 7807 b29b 52b4 d755 96c4 4d17 7acf ff0f 3965 3836 8b3f b1e7 713e efc0 e5db bf0a 9630 b312 2a91 1346 d799 c3a3 140 83d3 73df 4d26 ff83 25c1 3293 aec5 cdfd d40 c56f 9595 8922 29dd 95b1 6425 78b0 a368 a740 65b5 c882 7dbb 7cb7 21c1 f77c a25a 92e7 5381 6315 25c1 12fb ea31 261f 132a 6527 d290 320c d822 cf0a 7b64 f599 936e db2 6e86 6aec cf86 41d9 cd8e 5b52 ca75 b71e 8c12 3dad c735 1d44 b312 b1ca 3c86 9cb2 8076 a1b bca6 7dbc
+# if curMax and curNum are the same sign, no overflow will occur
+# Pseudocode:
+# for curNum in myList:
+#     if curMax < 0:
+#         if curNum < 0:
+#             compare, then replace if needed
+#         else: 
+#             replace
+#     else: (curMax >= 0)
+#         if curNum < 0:
+#             skip back to top
+#         else:
+#             compare, replace if needed
+
+# Setup:
+# data[0] = &list[0]
+# data[1] = &list[len-1]
+# R0 = current max
+# R1 = working data
+# R2 = address of number to check
+# R3 = 1 (to increment) or 0 (to compare)
+
+# Initializing:
+# load R2 with the address of the first thing in the list
+ldi R3, 0
+ld R2, R3
+
+# curMax = myList[0]
+ld R0, R2
+
+# set R3 to 1
+ldi R3, 1
+
+# The loop:
+# increment R2
+loopStart: add R2, R3
+
+# Comparisons
+ldi R3, 0
+sub R0, R3
+# if curMax < 0, jump
+jumpn mlz # max less than zero
+ld R1, R2 # retrieve the number; useful instruction regardless of where we jump to next
+# else curMax >= 0
+sub R1, R3
+# if curNum < 0, go to incrementing
+jumpn compareAddress
+nop
+# else go to number comparison
+jump compareNums
+nop
+
+# curMax < 0
+mlz: sub R1, R3 # must do curNum - 0, because 0 - curNum has the potential to cause an overflow
+# if curNum < 0, compare
+jumpn compareNums
+nop
+# else, replace
+jump setMax
+nop
+
+# compare the numbers: subtract, jump if, then add back to prevent stuff changing (fills the delay slot)
+compareNums: sub R1, R0 
+# if R1 < R0 -> continue to next number (increment and check addreses)
+jumpn compareAddress
+add R1, R0
+# else update R0 then proceed to next number
+setMax: mv R0, R1
+
+# compare address to end address: if current < end, jump back to top
+compareAddress: ldi R3, 1
+ld R1, R3
+sub R2, R1
+jumpn loopStart
+add R2, R1
+
+halt
+D: jump D # so it'll just stay in place after; doesn't actually count as an instruction
+nop
+
