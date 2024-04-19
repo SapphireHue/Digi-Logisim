@@ -1,0 +1,11 @@
+1. LALU simulates at approximately 250 Hz in logisim (250 clock cycles per second). Use the cycle count you got for finding the max of the 100 "half-range" numbers. Then calculate how many minutes it would take your Find the Max program to find the maximum of 65,000 numbers?
+
+Finding the max for 100 half-range numbers takes 901 cycles. For 65,000 numbers, it would take 585,650 cycles. At 250 cycles per second, that would take about 2343 seconds, or 39 minutes.
+
+2. Assume you implemented LALU in real silicon in the Samsung 4nm process and that it now runs at 1 GHz. How many milliseconds would it take your Find the Max program to find the maximum of 65000 numbers?
+
+It would again take ~585,650 cycles. 1 GHz is 10^9 cycles per second, or 10^6 cycles per millisecond. Thus, it would take about 0.586 milliseconds.
+
+3. Assume you are designing a video compression processor that runs at 1 GHz and is able to process 30 frames of video per second in real time. You're using Logisim to design this processor and your Logisim implementation simulates at 250 Hz. How long would it take Logisim to simulate 10 seconds of video (use units that are easy to conceptualize)?
+
+Logisim runs at 250 Hz, or 250 cycles per second, while the processor runs at 10^9 cycles per second. Thus, Logisim runs 4 * 10^6 times slower than the processor. What takes the processor 10 seconds would take Logisim 4 * 10^7 seconds = 666,667 minutes = 11,112 hours = 463 days = 1 year, 3 months, and a week.
